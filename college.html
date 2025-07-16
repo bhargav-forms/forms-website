@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Registration Form</title>
+    <link rel="stylesheet" href="college.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>College Registration Form</h1>
+            <p>Please fill out this form with the required information</p>
+        </header>
+        
+        <form id="registrationForm" novalidate>
+            <!-- Personal Information -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="male" required> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                        <label><input type="radio" name="gender" value="other"> Other</label>
+                    </div>
+                    <span class="error-message" id="gender-error"></span>
+                </div>
+            </fieldset>
+
+            <!-- Contact Information -->
+            <fieldset>
+                <legend>Contact Information</legend>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="e.g., name@example.com" required>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="e.g., 123-456-7890" required>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Mailing Address</label>
+                    <textarea id="address" name="address" rows="3" placeholder="Enter your full mailing address" required></textarea>
+                    <span class="error-message"></span>
+                </div>
+            </fieldset>
+
+            <!-- Academic Information -->
+            <fieldset>
+                <legend>Academic Information</legend>
+                <div class="form-group">
+                    <label for="major">Desired Major/Program</label>
+                    <select id="major" name="major" required>
+                        <option value="" disabled selected>Select a Major</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="eng">Engineering</option>
+                        <option value="bus">Business Administration</option>
+                        <option value="art">Arts & Humanities</option>
+                        <option value="sci">Natural Sciences</option>
+                    </select>
+                    <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="graduationYear">High School Graduation Year</label>
+                    <input type="number" id="graduationYear" name="graduationYear" min="2015" max="2024" placeholder="e.g., 2024" required>
+                    <span class="error-message"></span>
+                </div>
+            </fieldset>
+
+            <!-- Agreement -->
+            <fieldset>
+                <legend>Agreement</legend>
+                <div class="form-group terms">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the <a href="#">terms and conditions</a>
+                    </label>
+                    <span class="error-message"></span>
+                </div>
+            </fieldset>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="college.js"></script>
+</body>
+</html>

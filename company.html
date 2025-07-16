@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Registration Form</title>
+    <link rel="stylesheet" href="company.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="form-container">
+        <form id="registrationForm" novalidate>
+            <h1>Employee Registration</h1>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="companyName">Company Name</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" id="designation" name="designation" placeholder="e.g., Software Engineer" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="startYear">Start Year</label>
+                    <input type="number" id="startYear" name="startYear" placeholder="YYYY" required>
+                </div>
+                <div class="form-group">
+                    <label for="endYear">End Year</label>
+                    <input type="text" id="endYear" name="endYear" placeholder="YYYY or Present" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ctc">Current CTC (in LPA)</label>
+                    <input type="number" id="ctc" name="ctc" step="0.1" placeholder="e.g., 15.5" required>
+                </div>
+                <div class="form-group">
+                    <label for="joiningYear">Year of Joining</label>
+                    <input type="number" id="joiningYear" name="joiningYear" placeholder="YYYY" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="contactNumber" placeholder="Enter 10-digit number" required>
+            </div>
+
+            <button type="submit">Submit</button>
+
+            <div id="formMessage"></div>
+        </form>
+    </div>
+
+    <script src="company.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login / Register</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Left Form Section -->
+    <div class="left-box">
+      <!-- Login Section -->
+      <div id="login-section">
+        <h2>Login</h2>
+        <form action="login.php" method="POST" class="form">
+          <input type="text" name="login_username" placeholder="Username" required />
+          <input type="email" name="login_email" placeholder="Email" required />
+          <button type="submit">Login</button>
+          <p>Don't have an account? <a href="#" onclick="toggleForm(true)">Register</a></p>
+        </form>
+      </div>
+
+      <!-- Register Section -->
+      <div id="register-section" style="display:none;">
+        <h2>Register</h2>
+        <form id="register-form" class="form">
+          <input type="text" id="reg_username" placeholder="Username" required />
+          <input type="email" id="reg_email" placeholder="Email" required />
+          <button type="button" onclick="sendOTP()">Send OTP</button>
+
+          <input type="text" id="otp" placeholder="Enter OTP" style="display:none;" />
+          <button type="button" id="verifyBtn" onclick="verifyOTP()" style="display:none;">Verify OTP</button>
+
+          <p>Already have an account? <a href="#" onclick="toggleForm(false)">Login</a></p>
+        </form>
+        <p id="msg"></p>
+      </div>
+    </div>
+
+    <!-- Right Background Image Section -->
+    <div class="right-box">
+      <!-- Background image set via CSS -->
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
