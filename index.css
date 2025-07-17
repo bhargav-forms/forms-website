@@ -1,86 +1,107 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
-  background: url('https://mcls.eu/media/images/servicegroup/2/4/240_gettyimages-526037309.webp') no-repeat center center fixed;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('bg.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  color: white;
+  color: #fff;
 }
 
-/* Left-side content */
 .container {
-  width: 40%;
-  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  padding: 0 4rem;
+  align-items: center;
+  backdrop-filter: brightness(0.7);
+}
+
+.info-side {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
+.info-side h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
 }
 
-form {
+.info-side p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.social-icons i {
+  font-size: 1.4rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.form-side form {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.form-side h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.form-side input[type="text"],
+.form-side input[type="email"],
+.form-side input[type="password"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-side .email-otp {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  gap: 0.5rem;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"] {
-  padding: 12px;
+.form-side .email-otp input {
+  flex: 1;
+}
+
+.form-side .email-otp button {
+  padding: 0.8rem 1rem;
   border: none;
-  border-radius: 5px;
-  outline: none;
-  font-size: 16px;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #333;
+  background-color: #555;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-button {
-  padding: 12px;
-  background-color: #28a745;
+.form-side button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #fca311;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  margin-top: 0.5rem;
 }
 
-button:hover {
-  background-color: #218838;
+.form-side p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #ddd;
 }
 
-.toggle-link {
-  color: #00bfff;
+.form-side .switch {
+  color: #fff;
+  text-decoration: underline;
   cursor: pointer;
-  font-size: 14px;
-  text-align: left;
-  margin-top: 10px;
-}
-
-#registerForm {
-  display: none;
-  margin-top: 30px;
-}
-
-/* Optional: Adjust layout for small screens */
-@media screen and (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 30px;
-  }
 }
