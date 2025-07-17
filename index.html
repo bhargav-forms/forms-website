@@ -2,47 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Login / Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PINCO Login/Register</title>
   <link rel="stylesheet" href="index.css" />
+  <script>
+    function showRegister() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("registerForm").style.display = "block";
+    }
+
+    function showLogin() {
+      document.getElementById("registerForm").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    }
+
+    function sendOTP() {
+      const email = document.getElementById("regEmail").value;
+      if (email) {
+        fetch("send_otp.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: "email=" + encodeURIComponent(email),
+        })
+          .then(response => response.text())
+          .then(alert)
+          .catch(error => alert("Failed to send OTP"));
+      } else {
+        alert("Please enter your email.");
+      }
+    }
+
+    function verifyAndRegister(event) {
+      event.preventDefault();
+      const form = document.getElementById("registerForm");
+      const formData = new FormData(form);
+      fetch("verify_otp.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then(response => response.text())
+        .then(result => {
+          if (result === "OTP verified. Registration successful.") {
+            window.location.href = "dashboard.html";
+          } else {
+            alert(result);
+          }
+        });
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+      // Direct login, assuming server is validating login separately
+      window.location.href = "dashboard.html";
+    }
+  </script>
 </head>
 <body>
   <div class="container">
-    <!-- Left Form Section -->
-    <div class="left-box">
-      <!-- Login Section -->
-      <div id="login-section">
-        <h2>Login</h2>
-        <form action="login.php" method="POST" class="form">
-          <input type="text" name="login_username" placeholder="Username" required />
-          <input type="email" name="login_email" placeholder="Email" required />
-          <button type="submit">Login</button>
-          <p>Don't have an account? <a href="#" onclick="toggleForm(true)">Register</a></p>
-        </form>
-      </div>
-
-      <!-- Register Section -->
-      <div id="register-section" style="display:none;">
-        <h2>Register</h2>
-        <form id="register-form" class="form">
-          <input type="text" id="reg_username" placeholder="Username" required />
-          <input type="email" id="reg_email" placeholder="Email" required />
-          <button type="button" onclick="sendOTP()">Send OTP</button>
-
-          <input type="text" id="otp" placeholder="Enter OTP" style="display:none;" />
-          <button type="button" id="verifyBtn" onclick="verifyOTP()" style="display:none;">Verify OTP</button>
-
-          <p>Already have an account? <a href="#" onclick="toggleForm(false)">Login</a></p>
-        </form>
-        <p id="msg"></p>
+    <div class="info-side">
+      <h1>PINCO</h1>
+      <p>A Mobile App for Students to Succeed in Placements</p>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-youtube"></i>
       </div>
     </div>
 
-    <!-- Right Background Image Section -->
-    <div class="right-box">
-      <!-- Background image set via CSS -->
+    <!-- Login Form -->
+    <div class="form-side">
+      <form id="loginForm" onsubmit="loginUser(event)">
+        <h2>Sign in</h2>
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email ID" required />
+        <button type="submit">Sign in now</button>
+        <p>Don't have an account? <span class="switch" onclick="showRegister()">Register</span></p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" style="display: none" onsubmit="verifyAndRegister(event)">
+        <h2>Register</h2>
+        <input type="text" name="username" placeholder="Username" required />
+        <div class="email-otp">
+          <input type="email" id="regEmail" name="email" placeholder="Email ID" required />
+          <button type="button" onclick="sendOTP()">Send OTP</button>
+        </div>
+        <input type="text" name="otp" placeholder="Enter 6-digit code" maxlength="6" required />
+        <button type="submit">Register Now</button>
+        <p>Already have an account? <span class="switch" onclick="showLogin()">Sign in</span></p>
+      </form>
     </div>
   </div>
 
-  <script src="index.js"></script>
+  <!-- FontAwesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
