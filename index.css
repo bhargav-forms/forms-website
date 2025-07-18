@@ -9,7 +9,7 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 80vh;
   padding: 0 4rem;
   align-items: center;
   backdrop-filter: brightness(0.5);
